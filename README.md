@@ -5,21 +5,42 @@ Lorsque l'on clique sur une icone, elle change d'état et déplie/plie un/des é
 
 ## Installation
 
-Une série d'exemples pas à pas qui vous expliquent comment faire fonctionner un environnement de développement
-
-Dites quel sera le pas
+Vous pouvez créer des listes sous ce format avec pour conteneur une balise ayant pour id "chuilachuipula"
 
 `` `
-Donner l'exemple
+<div id="chuilachuipula">
+	<ul>
+		<li>
+			<div">
+				<i class="icofont-caret-right icofont-2x"></i>
+				<h1>titre 1</h1>
+			</div>
+		</li>
+		<li>
+			<div>
+				<i class="icofont-rounded-right icofont-2x"></i>
+				<h2>sous titre 1.1</h2>
+			</div>
+			<div>
+				<p>article...</p>
+			</div>
+		</li>
+		<li>
+			<div">
+				<i class="icofont-rounded-right icofont-2x"></i>
+				<h2>sous titre 1.2</h2>
+			</div>
+			<div>
+				<p>article...</p>
+			</div>
+		</li>
+	</ul>
+	<ul">
+		...
+	</ul>
+	...
+</div>
 `` `
-
-Et répétez
-
-`` `
-jusqu'à la fin
-`` `
-
-Terminez avec un exemple d'extraction de données du système ou d'utilisation pour une petite démonstration.
 
 ## Construit avec
 
