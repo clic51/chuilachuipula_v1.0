@@ -8,38 +8,38 @@ Lorsque l'on clique sur une icone, elle change d'état et déplie/plie un/des é
 Vous pouvez créer des listes sous ce format avec pour conteneur une balise ayant pour id "chuilachuipula"
 
 `` `
-<div id="chuilachuipula">
-	<ul>
-		<li>
-			<div">
-				<i class="icofont-caret-right icofont-2x"></i>
-				<h1>titre 1</h1>
-			</div>
-		</li>
-		<li>
-			<div>
-				<i class="icofont-rounded-right icofont-2x"></i>
-				<h2>sous titre 1.1</h2>
-			</div>
-			<div>
-				<p>article...</p>
-			</div>
-		</li>
-		<li>
-			<div">
-				<i class="icofont-rounded-right icofont-2x"></i>
-				<h2>sous titre 1.2</h2>
-			</div>
-			<div>
-				<p>article...</p>
-			</div>
-		</li>
-	</ul>
-	<ul">
+&lt;div id="chuilachuipula"&gt;
+	&lt;ul&gt;
+		&lt;li&gt;
+			&lt;div"&gt;
+				&lt;i class="icofont-caret-right icofont-2x"&gt;&lt;/i&gt;
+				&lt;h1&gt;titre 1&lt;/h1&gt;
+			&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;div&gt;
+				&lt;i class="icofont-rounded-right icofont-2x"&gt;&lt;/i&gt;
+				&lt;h2&gt;sous titre 1.1&lt;/h2&gt;
+			&lt;/div&gt;
+			&lt;div&gt;
+				&lt;p&gt;article...&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;div"&gt;
+				&lt;i class="icofont-rounded-right icofont-2x"&gt;&lt;/i&gt;
+				&lt;h2&gt;sous titre 1.2&lt;/h2&gt;
+			&lt;/div&gt;
+			&lt;div&gt;
+				&lt;p&gt;article...&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;ul"&gt;
 		...
-	</ul>
+	&lt;/ul&gt;
 	...
-</div>
+&lt;/div&gt;
 `` `
 
 ## Construit avec
