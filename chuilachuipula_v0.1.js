@@ -1,8 +1,8 @@
-// --- chuilachuipula_v1.0 ---
+// --- chuilachuipula ---
 
 // # INIT ->
 var god_elem = document.getElementById("chuilachuipula");
-var is_chuila = {};
+var is_chuila = [];
 // Paramétrage css de base pour le bon affichage de ligne des listes,
 // à savoir enlever les puces des listes great parent "ul",
 // puis régler les display des small_child "h" en inline pour être positionné à coté des flèches,
@@ -15,7 +15,7 @@ if(typeof god_elem !== "undefined"){
 	// ## POUR chaque great_parent ->
 	for(var i = 0; i < god_elem.children.length; i++){
 		// ### -> j'alloue un tableau associatif de la liste "ul" à is_chuila
-		is_chuila[i] = {}
+		is_chuila[i] = [];
 		// ### -> j'enlève les puces de la liste great_parent
 		var great_parent = god_elem.children[i];
 		great_parent.style.listStyleType = "none";
@@ -89,20 +89,24 @@ function chuilaChuipula(item_clicked){
 		var state_arrow = item_clicked.parentElement.getAttribute("data-state");
 		console.log("state_arrow -> " + state_arrow);
 		if(state_arrow === "chuila"){
-			item_clicked.classList.replace("icofont-caret-down", "icofont-caret-right");
+			item_clicked.classList.remove("icofont-caret-down");
+			item_clicked.classList.add("icofont-caret-right");
 			item_clicked.parentElement.setAttribute("data-state", "chuipula");
 			for(var l = 1; l < nb_parent; l++){
-				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.replace("icofont-rounded-down", "icofont-rounded-right");
+				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.remove("icofont-rounded-down");
+				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.add("icofont-rounded-right");
 				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].setAttribute("data-state", "chuipula");
 				item_clicked.parentElement.parentElement.parentElement.children[l].children[1].style.display = "none";
 				is_chuila[rank_list_ul][l] = "chuipula";
 			}
 		}
 		else if(state_arrow === "chuipula"){
-			item_clicked.classList.replace("icofont-caret-right", "icofont-caret-down");
+			item_clicked.classList.remove("icofont-caret-right");
+			item_clicked.classList.add("icofont-caret-down");
 			item_clicked.parentElement.setAttribute("data-state", "chuila");
 			for(var l = 1; l < nb_parent; l++){
-				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.replace("icofont-rounded-right", "icofont-rounded-down");
+				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.remove("icofont-rounded-right");
+				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].children[0].classList.add("icofont-rounded-down");
 				item_clicked.parentElement.parentElement.parentElement.children[l].children[0].setAttribute("data-state", "chuila");
 				item_clicked.parentElement.parentElement.parentElement.children[l].children[1].style.display = "block";
 				is_chuila[rank_list_ul][l] = "chuila";
@@ -123,30 +127,44 @@ function chuilaChuipula(item_clicked){
 		var state_arrow = item_clicked.parentElement.getAttribute("data-state");
 		console.log("state_arrow -> " + state_arrow);
 		if(state_arrow === "chuila"){
-			item_clicked.classList.replace("icofont-rounded-down", "icofont-rounded-right");
+			console.log(item_clicked.className);
+			item_clicked.classList.remove("icofont-rounded-down");
+			item_clicked.classList.add("icofont-rounded-right");
+			console.log(item_clicked.className);
 			item_clicked.parentElement.setAttribute("data-state", "chuipula");
 			item_clicked.parentElement.parentElement.children[1].style.display = "none";
 			is_chuila[rank_list_ul][rank_subtitle] = "chuipula";
-			var check_state = Object.values(is_chuila[rank_list_ul]);
 			// #### SI je ne trouve aucun state "chuila", cela veut dire que toute la liste est fermée,
 			// #### et donc je dois fermer la flèche du "li" status "title" (icofont-caret-right) ->
-			if(check_state.indexOf("chuila") === -1){
+			var found = is_chuila[rank_list_ul].find(function(element){
+				return element === "chuila";
+			});
+			console.log("found -> " + found);
+			if(found !== "chuila"){
 				console.log("je ferme la flèche du title !");
-				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.replace("icofont-caret-down", "icofont-caret-right");
+				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.remove("icofont-caret-down");
+				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.add("icofont-caret-right");
 				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].setAttribute("data-state", "chuipula");
 			}
 		}
 		else if(state_arrow === "chuipula"){
-			item_clicked.classList.replace("icofont-rounded-right", "icofont-rounded-down");
+			console.log(item_clicked.className);
+			item_clicked.classList.remove("icofont-rounded-right");
+			item_clicked.classList.add("icofont-rounded-down");
+			console.log(item_clicked.className);
 			item_clicked.parentElement.setAttribute("data-state", "chuila");
 			item_clicked.parentElement.parentElement.children[1].style.display = "block";
 			is_chuila[rank_list_ul][rank_subtitle] = "chuila";
-			var check_state = Object.values(is_chuila[rank_list_ul]);
 			// #### SI je ne trouve aucun state "chuipula", cela veut dire que toute la liste est ouverte,
 			// #### et donc je dois ouvrir la flèche du "li" status "title" (icofont-caret-down) ->
-			if(check_state.indexOf("chuipula") === -1){
+			var found = is_chuila[rank_list_ul].find(function(element){
+				return element === "chuipula";
+			});
+			console.log("found -> " + found);
+			if(found !== "chuipula"){
 				console.log("j'ouvre la flèche du title !");
-				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.replace("icofont-caret-right", "icofont-caret-down");
+				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.remove("icofont-caret-right");
+				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].children[0].classList.add("icofont-caret-down");
 				item_clicked.parentElement.parentElement.parentElement.children[0].children[0].setAttribute("data-state", "chuila");
 			}
 		}
